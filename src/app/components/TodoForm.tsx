@@ -1,17 +1,14 @@
 // /src/app/components/TodoForm.tsx
-"use Client";
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const TodoForm = () => {
-  const [title, setTitle] = useState("");
-  const [tasks, setTasks] = useState([]); // Initialize tasks as an empty array to store tasks
+const TodoForm = ({ addTask }) => {
+  const [title, setTitle] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim() !== "") {
-      // Add the new task to the tasks array
-      setTasks([...tasks, { id: tasks.length + 1, title, status: "In Progress" }]);
-      setTitle(""); // Clear the input field after adding a task
+    if (title.trim() !== '') {
+      addTask({ title, status: 'In Progress' });
+      setTitle('');
     }
   };
 
